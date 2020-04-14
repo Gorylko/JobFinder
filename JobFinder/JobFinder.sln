@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobFinder.Web", "JobFinder.Web\JobFinder.Web.csproj", "{143729E2-8866-48C9-8CE8-E9A6C645C9F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobFinder.Data", "JobFinder.Data\JobFinder.Data.csproj", "{0F66CE1C-CE12-44E8-ADF1-0AF38719C62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobFinder.Data", "JobFinder.Data\JobFinder.Data.csproj", "{0F66CE1C-CE12-44E8-ADF1-0AF38719C62C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobFinder.Business", "JobFinder.Business\JobFinder.Business.csproj", "{19B2CBCF-DE7B-4098-AEB6-62BF8344B1C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobFinder.Business", "JobFinder.Business\JobFinder.Business.csproj", "{19B2CBCF-DE7B-4098-AEB6-62BF8344B1C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobFinder.General", "JobFinder.General\JobFinder.General.csproj", "{D0F0BFC6-3DD6-438F-865A-732491B7CC37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobFinder.General", "JobFinder.General\JobFinder.General.csproj", "{D0F0BFC6-3DD6-438F-865A-732491B7CC37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobFinder.Web", "JobFinder.Web\JobFinder.Web.csproj", "{D41B0052-CC69-422F-8B66-36895144F47F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{143729E2-8866-48C9-8CE8-E9A6C645C9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{143729E2-8866-48C9-8CE8-E9A6C645C9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{143729E2-8866-48C9-8CE8-E9A6C645C9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{143729E2-8866-48C9-8CE8-E9A6C645C9F0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F66CE1C-CE12-44E8-ADF1-0AF38719C62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F66CE1C-CE12-44E8-ADF1-0AF38719C62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F66CE1C-CE12-44E8-ADF1-0AF38719C62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{D0F0BFC6-3DD6-438F-865A-732491B7CC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0F0BFC6-3DD6-438F-865A-732491B7CC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0F0BFC6-3DD6-438F-865A-732491B7CC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41B0052-CC69-422F-8B66-36895144F47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41B0052-CC69-422F-8B66-36895144F47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41B0052-CC69-422F-8B66-36895144F47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41B0052-CC69-422F-8B66-36895144F47F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

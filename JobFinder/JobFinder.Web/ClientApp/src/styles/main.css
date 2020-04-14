@@ -1,0 +1,11 @@
+.main-menu-card{
+    color : black;
+    background-color: blue;
+}
+.info-icon{
+    position: absolute;
+}
+.item{
+    margin: 30;
+}
+

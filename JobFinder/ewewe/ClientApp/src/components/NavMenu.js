@@ -23,17 +23,17 @@ export class NavMenu extends Component {
 
   render () {
     return (
-        <nav className="nav-wrapper">
-            <div className="container">
-                <Link to="/" className="brand-logo">JF</Link>
-
-                <ul className="right">
-                    <li><Link to="/">Main</Link></li>
-                    <li><Link to="/items">Items</Link></li>
-                    <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
-                </ul>
-            </div>
-        </nav>  
+      <nav className="nav-wrapper">
+          <div className="container">
+              <Link to="/" className="brand-logo">Shopping</Link>
+              
+              <ul className="right">
+                  <li><Link to="/">Shop</Link></li>
+                  <li><Link to="/cart">My cart</Link></li>
+                  <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
+              </ul>
+          </div>
+      </nav>  
     );
   }
 }

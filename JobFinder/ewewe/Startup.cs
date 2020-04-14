@@ -28,23 +28,6 @@ namespace JobFinder.Web
             {
                 configuration.RootPath = "ClientApp/build";
             });
-
-            services.AddSwaggerDocument(config =>
-            {
-                config.PostProcess = document =>
-                {
-                    document.Info.Version = "v1";
-                    document.Info.Title = "Company Manager API";
-                    document.Info.Description = "Hello";
-                    document.Info.TermsOfService = "None";
-                    document.Info.Contact = new NSwag.OpenApiContact
-                    {
-                        Name = "Proj",
-                        Email = string.Empty,
-                        Url = "https://dev.azure.com/KirylShamiakou/CompanyManager",
-                    };
-                };
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,7 +50,12 @@ namespace JobFinder.Web
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
+            });
 
             app.UseSpa(spa =>
             {
@@ -78,9 +66,6 @@ namespace JobFinder.Web
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
-
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
         }
     }
 }
