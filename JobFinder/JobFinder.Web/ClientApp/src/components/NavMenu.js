@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import './NavMenu.css';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -23,6 +22,7 @@ export class NavMenu extends Component {
 
   render () {
     return (
+      <header>
         <nav className="nav-wrapper">
             <div className="container">
                 <Link to="/" className="brand-logo">JF</Link>
@@ -34,6 +34,9 @@ export class NavMenu extends Component {
                 </ul>
             </div>
         </nav>  
+      </header>
     );
   }
 }
+
+export default NavMenu;

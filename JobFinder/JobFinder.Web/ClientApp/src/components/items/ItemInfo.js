@@ -36,9 +36,8 @@ class ItemInfo extends Component{
                 <h1>Loading...</h1>
             );
         }
-        return(
-        <h1>Info about item {this.state.item.name}</h1>
-        );
+        return(1
+           );
     }
 }
 

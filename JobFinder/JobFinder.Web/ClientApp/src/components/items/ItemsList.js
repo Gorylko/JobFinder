@@ -22,8 +22,6 @@ class ItemList extends Component{
                 items: result
               });
             },
-            // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-            // чтобы не перехватывать исключения из ошибок в самих компонентах.
             (error) => {
               this.setState({
                 isLoaded: true,
