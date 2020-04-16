@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using JobFinder.Business.Services.Interfaces;
+using JobFinder.Business.Services.Realizations;
 using JobFinder.Web.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -23,6 +25,7 @@ namespace JobFinder.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ILoginService, LoginService>();
 
             services.AddControllersWithViews();
 

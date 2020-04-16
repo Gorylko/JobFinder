@@ -13,7 +13,7 @@ export class Layout extends Component {
         <NavMenu />
 
         <Container>
-          <div class="col s10 container-color">
+          <div>
             {this.props.children}
           </div>
 

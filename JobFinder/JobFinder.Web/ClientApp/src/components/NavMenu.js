@@ -23,7 +23,7 @@ export class NavMenu extends Component {
 
   render () {
     const loginButton = authenticationService.currentUserValue
-    ? <Link to="/logout">Log out</Link>
+    ? <Link to='/' onClick={authenticationService.logout}>Log out</Link>
     : <Link to="/login">Log in</Link>;
   
     return (
