@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {authenticationService} from '../services/authentication.service'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -21,6 +22,10 @@ export class NavMenu extends Component {
   }
 
   render () {
+    const loginButton = authenticationService.currentUserValue
+    ? <Link to="/logout">Log out</Link>
+    : <Link to="/login">Log in</Link>;
+  
     return (
       <header>
         <nav className="nav-wrapper">
@@ -31,6 +36,7 @@ export class NavMenu extends Component {
                     <li><Link to="/">Main</Link></li>
                     <li><Link to="/items">Items</Link></li>
                     <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
+                    <li>{loginButton}</li>
                 </ul>
             </div>
         </nav>  
