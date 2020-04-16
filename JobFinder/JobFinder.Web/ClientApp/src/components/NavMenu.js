@@ -35,7 +35,7 @@ export class NavMenu extends Component {
                 <ul className="right">
                     <li><Link to="/">Main</Link></li>
                     <li><Link to="/items">Items</Link></li>
-                    <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
+                    <li><Link to="/carts"><i className="material-icons">shopping_cart</i></Link></li>
                     <li>{loginButton}</li>
                 </ul>
             </div>

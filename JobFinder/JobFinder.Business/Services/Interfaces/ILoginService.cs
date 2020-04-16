@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using JobFinder.General.Entities;
+﻿using JobFinder.General.Entities;
 
 namespace JobFinder.Business.Services.Interfaces
 {
@@ -10,7 +7,5 @@ namespace JobFinder.Business.Services.Interfaces
         User Login(string login, string password);
 
         User Register(string login, string password);
-
-        User Login(string login);
     }
 }

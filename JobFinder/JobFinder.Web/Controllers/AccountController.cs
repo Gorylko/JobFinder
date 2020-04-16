@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using JobFinder.Business.Services.Interfaces;
 using JobFinder.Web.Auth;
+using JobFinder.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -23,9 +24,9 @@ namespace JobFinder.Web.Controllers
         }
 
         [HttpPost("api/v1/login")]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login(LoginModel model)
         {
-            var identity = await GetIdentity(username, password);
+            var identity = await GetIdentity(model.Username, model.Password);
             if (identity == null)
             {
                 return BadRequest(new { errorText = "Invalid username or password." });
@@ -69,7 +70,7 @@ namespace JobFinder.Web.Controllers
 
         private async Task<ClaimsIdentity> GetIdentity(string username, string password)
         {
-            //var person = await _loginService.Login(username, password);
+            //var person = await _userService.Login(username, password);
 
             var user = _loginService.Login(username, password);
 

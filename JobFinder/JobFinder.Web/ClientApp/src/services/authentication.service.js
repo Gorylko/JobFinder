@@ -13,11 +13,48 @@ export const authenticationService = {
 
 function login(username, password) {
     const requestOptions = {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *client
+        body: {
+            'username': username, 
+            'password' : password 
+        } 
+      };
+     //   if (username && password) {
+ 
+         //   const data = new FormData();
+         //   data.append("username", 'username');
+        //   data.append("password", password);
+        //    console.log(data);
+        //    var xhr = new XMLHttpRequest();
+ //
+        //    xhr.open("post", 'api/v1/login', true);
+        //    xhr.onload = function () {
+        //        if (xhr.status === 200) {
+        //        }
+         //   }.bind(this);
+         //   xhr.send(data);
+        //}
+    return fetch(`api/v1/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    };
-    return fetch(`api/v1/login`, requestOptions)
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
+            'username': username, 
+            'password' : password 
+        })
+    })
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes

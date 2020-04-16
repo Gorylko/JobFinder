@@ -11,7 +11,7 @@ class LoginPage extends Component{
     }
 
     login = () => {
-        var user = authenticationService.login();
+        var user = authenticationService.login("fishLogin", "fishPassword");
         console.log(user);
     }
     
