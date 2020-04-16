@@ -28,6 +28,7 @@ namespace JobFinder.Web
         {
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IItemService, ItemService>();
+            services.AddTransient<ILoginService, LoginService>();
 
             services.AddControllersWithViews();
 
