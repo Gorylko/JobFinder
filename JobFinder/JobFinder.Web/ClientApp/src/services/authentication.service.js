@@ -6,44 +6,38 @@ const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('
 
 export const authenticationService = {
     login,
+    register,
     logout,
     currentUser: currentUserSubject.asObservable(),
     get currentUserValue () { return currentUserSubject.value }
 };
 
 function login(username, password) {
-    const requestOptions = {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
+    return fetch(`api/v1/login`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *client
-        body: {
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({
             'username': username, 
             'password' : password 
-        } 
-      };
-     //   if (username && password) {
- 
-         //   const data = new FormData();
-         //   data.append("username", 'username');
-        //   data.append("password", password);
-        //    console.log(data);
-        //    var xhr = new XMLHttpRequest();
- //
-        //    xhr.open("post", 'api/v1/login', true);
-        //    xhr.onload = function () {
-        //        if (xhr.status === 200) {
-        //        }
-         //   }.bind(this);
-         //   xhr.send(data);
-        //}
-    return fetch(`api/v1/login`, {
+        })
+    })
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            currentUserSubject.next(user);
+
+            return user;
+        });
+}
+
+function register(username, password){
+
+    return fetch(`api/v1/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

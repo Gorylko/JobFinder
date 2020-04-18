@@ -51,11 +51,12 @@ namespace JobFinder.Web.Controllers
             };
 
             Response.Cookies.Append("Token", encodedJwt);
-            return Json(response);
+            var a = Json(response);
+            return a;
         }
 
         [AllowAnonymous]
-        [HttpPost("/register")]
+        [HttpPost("api/v1/register")]
         public async Task<IActionResult> Register(string username, string password)
         {
             var user = _loginService.Register(username, password);

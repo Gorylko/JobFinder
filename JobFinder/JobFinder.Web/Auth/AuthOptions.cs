@@ -11,7 +11,7 @@ namespace JobFinder.Web.Auth
     {
         public const string Issuer = "MyAuthServer";
         public const string Audience = "MyAuthClient";
-        public const int LifeTime = 60; // minutes
+        public const int LifeTime = 1440; // minutes
 
         private const string Key = "mysupersecret_secretkey!123";
 
