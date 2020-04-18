@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import { authenticationService } from '../../services/authentication.service'
+import { Redirect } from 'react-router-dom'
+import { authenticationService } from '../../services/authentication.service';
+import ErrorMessage from '../main/ErrorMessage';
+import { errorMessages } from '../../helpers/error-messages'
+import { Link } from 'react-router-dom';
+
 
 class RegisterPage extends Component{
     constructor(props){
@@ -8,8 +13,9 @@ class RegisterPage extends Component{
             this.props.history.push('/');
         }
         this.state = {
-            isLoading: true,
-            loginResponse: null
+            registerResponse: null,
+            username: '1',
+            password: '1'
         }
     }
 
@@ -17,60 +23,61 @@ class RegisterPage extends Component{
         var user = authenticationService.register("fishLogin", "fishPassword");
     }
     
+    handleSubmit = (event) => {
+        this.register();
+        event.preventDefault();
+    }    
+
+    handleInputChange = (event) =>{
+        this.setState({
+            [event.target.id]: event.target.value
+        });
+    }
+
     componentDidMount(){
     }       
 
     render(){
         return(
             <>
+            <div class="row">
+                <form class="col s12" onSubmit={this.handleSubmit}>
                 <div class="row">
-                    <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="first_name" type="text" class="validate"/>
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate"/>
-                            <label for="last_name">Last Name</label>
-                        </div>
+                    <div class="input-field col s6">
+                        <input id="username" type="text" class="validate" onChange={this.handleInputChange}/>
+                        <label for="username">Username</label>
+                        <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.username)} />
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input disabled value="I am not editable" id="disabled" type="text" class="validate"/>
-                            <label for="disabled">Disabled</label>
-                        </div>
+                    <div class="input-field col s6">
+                        <input id="password" type="password" class="validate" onChange={this.handleInputChange}/>
+                        <label for="password">Password</label>
+                        <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.password)} />
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate"/>
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate"/>
-                            <label for="email">Email</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                        This is an inline input field:
-                        <div class="input-field inline">
-                            <input id="email_inline" type="email" class="validate"/>
-                            <label for="email_inline">Email</label>
-                            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-                        </div>
-                        </div>
-                    </div>
-                    </form>
                 </div>
-        
-                <div>
-                    <button color='red' onClick={this.register}>Click</button>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="phone-number" type="tel" class="validate" onChange={this.handleInputChange}/>
+                        <label for="phone-number">Phone Number</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter phone</span>
+                    </div>
                 </div>
-            </>
-       
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" onChange={this.handleInputChange}/>
+                        <label for="email">Email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter email</span>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
+                </form>
+            </div>
+    
+            <div>
+                <Link to='/login'>
+                    <a class="waves-effect waves-light btn-small white-text">Login</a>
+                </Link>
+            </div>
+        </>
         );
     }
 }

@@ -33,7 +33,6 @@ class LoginPage extends Component{
         this.setState({
             [event.target.id]: event.target.value
         });
-        console.log(this.state.username + ' 2 ' + this.state.password)
     }
 
     render(){
@@ -53,27 +52,13 @@ class LoginPage extends Component{
                         <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.password)} />
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="phone-number" type="tel" class="validate" onChange={this.handleInputChange}/>
-                        <label for="phone-number">Phone Number</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter phone</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" onChange={this.handleInputChange}/>
-                        <label for="email">Email</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter email</span>
-                    </div>
-                </div>
                 <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
                 </form>
             </div>
     
             <div>
                 <Link to='/register'>
-                    <a class="waves-effect waves-light btn-small white-text" onClick={this.register}>Register</a>
+                    <a class="waves-effect waves-light btn-small white-text">Register</a>
                 </Link>
             </div>
         </>
