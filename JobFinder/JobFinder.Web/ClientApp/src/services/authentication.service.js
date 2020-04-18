@@ -1,16 +1,20 @@
 import { BehaviorSubject } from 'rxjs';
-
 import { handleResponse } from '../helpers/handle-response';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
 export const authenticationService = {
+    isLogged,
     login,
     register,
     logout,
     currentUser: currentUserSubject.asObservable(),
     get currentUserValue () { return currentUserSubject.value }
 };
+
+function isLogged(){
+    return currentUserSubject.value;
+}
 
 function login(username, password) {
     return fetch(`api/v1/login`, {
@@ -55,7 +59,7 @@ function register(username, password){
             localStorage.setItem('currentUser', JSON.stringify(user));
             currentUserSubject.next(user);
 
-            return user;
+            return currentUserSubject.value;
         });
 }
 

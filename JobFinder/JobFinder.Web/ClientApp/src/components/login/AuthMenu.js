@@ -15,11 +15,6 @@ class AuthMenu extends Component{
             loginResponse: null
         }
     }
-
-    login = () => {
-        var user = authenticationService.login("fishLogin", "fishPassword");
-        console.log(user);
-    }
     
     componentDidMount(){
     }       

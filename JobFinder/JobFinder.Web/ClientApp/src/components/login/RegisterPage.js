@@ -15,7 +15,6 @@ class RegisterPage extends Component{
 
     register = () => {
         var user = authenticationService.register("fishLogin", "fishPassword");
-        console.log(user);
     }
     
     componentDidMount(){
