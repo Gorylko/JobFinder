@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Item from './Item';
+import { authenticationService } from '../../services/authentication.service';
 
 class ItemList extends Component{
     constructor(props){
@@ -37,15 +38,20 @@ class ItemList extends Component{
                 <Item item={item}/>
             )
         })
-        console.log(2);
         return(
             <div className="container">
-                <h3 className="center">Our items</h3>
-                <div>
-                    <div className="row">
-                        {itemList}
-                    </div>
-                </div>
+              {authenticationService.isLogged && 
+                <Link to='items/add'>
+                  <a class="waves-effect waves-light btn-large white-text">Add new<i class="large material-icons right">create_new_folder</i></a>
+               </Link>
+              }
+              <h3 className="center">Our items</h3>
+              
+              <div>
+                  <div className="row">
+                      {itemList}
+                  </div>
+              </div>
             </div>
         )
     }

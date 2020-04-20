@@ -22,25 +22,30 @@ export class NavMenu extends Component {
   }
 
   render () {
-    const loginButton = authenticationService.currentUserValue
-    ? <Link to='/auth/logout' onClick={authenticationService.logout}>Log out</Link>
-    : <Link to="/auth/login">Log in</Link>;
+    const profileButton = authenticationService.currentUserValue
+    ? 
+    <Link to='/' onClick={authenticationService.logout}>                      
+      <li><a class="large waves-effect waves-light btn-large">Logout<i class="material-icons right">cancel</i></a></li>
+    </Link>
+    : 
+    <Link to="/auth/login">
+      <li><a class="large waves-effect waves-light btn-large">Log in<i class="material-icons right">cloud_done</i></a></li>
+    </Link>;
   
     return (
-      <header>
-        <nav className="nav-wrapper">
-            <div className="container">
-                <Link to="/" className="brand-logo">JF</Link>
+        <header>
+          <nav className="nav-wrapper">
+              <div className="container">
+                  <Link to="/" className="brand-logo">JF</Link>
 
-                <ul className="right">
-                    <li><Link to="/">Main</Link></li>
-                    <li><Link to="/items">Items</Link></li>
-                    <li><Link to="/carts"><i className="material-icons">shopping_cart</i></Link></li>
-                    <li>{loginButton}</li>
-                </ul>
-            </div>
-        </nav>  
-      </header>
+                  <ul className="right">
+                      <li><Link to="/">Main</Link></li>
+                      <li><Link to="/items">Items</Link></li>
+                      <li>{profileButton}</li>
+                  </ul>
+              </div>
+          </nav>  
+        </header>
     );
   }
 }

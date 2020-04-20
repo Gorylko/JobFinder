@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Switch } from 'react-router-dom';
-import { Route } from 'react-router';
-
+import { Route, Router } from 'react-router';
 import ItemList from './ItemsList';
 import ItemInfo from './ItemInfo';
+import { PrivateRoute } from '../PrivateRoute';
+import { createImportEqualsDeclaration } from 'typescript';
+import CreateItemMenu from './CreateItemMenu';
 
 class ItemMenu extends Component{
     constructor(props){
@@ -15,7 +17,8 @@ class ItemMenu extends Component{
         return(
             <Switch>
                 <Route exact path="/items" component={ ItemList } />
-                <Route path="/items/:number" component={ItemInfo}/>
+                <PrivateRoute path="/items/add" component={CreateItemMenu}/>
+                <Route path="/items/:number" component={ItemInfo} />
             </Switch>
         );
     }
