@@ -23,8 +23,8 @@ export class NavMenu extends Component {
 
   render () {
     const loginButton = authenticationService.currentUserValue
-    ? <Link to='/' onClick={authenticationService.logout}>Log out</Link>
-    : <Link to="/login">Log in</Link>;
+    ? <Link to='/auth/logout' onClick={authenticationService.logout}>Log out</Link>
+    : <Link to="/auth/login">Log in</Link>;
   
     return (
       <header>

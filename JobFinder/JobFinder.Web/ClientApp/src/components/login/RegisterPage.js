@@ -4,6 +4,7 @@ import { authenticationService } from '../../services/authentication.service';
 import ErrorMessage from '../main/ErrorMessage';
 import { errorMessages } from '../../helpers/error-messages'
 import { Link } from 'react-router-dom';
+import Warning from '../main/Warning';
 
 
 class RegisterPage extends Component{
@@ -13,14 +14,19 @@ class RegisterPage extends Component{
             this.props.history.push('/');
         }
         this.state = {
-            registerResponse: null,
-            username: '1',
-            password: '1'
+            isWarningShowed: false,
+            username: '',
+            password: ''
         }
     }
 
     register = () => {
-        var user = authenticationService.register("fishLogin", "fishPassword");
+        authenticationService.register(this.state.username, this.state.password)
+        .then(isOk =>{
+            this.setState({
+                isWarningShowed: !isOk
+            });
+        });
     }
     
     handleSubmit = (event) => {
@@ -71,10 +77,12 @@ class RegisterPage extends Component{
                 <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
                 </form>
             </div>
-    
+            {this.state.isWarningShowed &&
+                <Warning message="incorrect input"/>
+            }
             <div>
-                <Link to='/login'>
-                    <a class="waves-effect waves-light btn-small white-text">Login</a>
+                <Link to='/auth/login'>
+                    <a class="waves-effect waves-light btn-small white-text">Back to Login</a>
                 </Link>
             </div>
         </>

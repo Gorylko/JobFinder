@@ -20,13 +20,20 @@ namespace JobFinder.Business.Services.Realizations
 
         public User Register(string login, string password)
         {
-            _userService.Save(new User
+            if (_userService.GetByCredentials(login, password) != null)
+            {
+                return null;
+            }
+
+            var user = new User
             {
                 Login = login,
                 Password = password
-            });
+            };
 
-            return _userService.GetByCredentials(login, password);
+            _userService.Save(user);
+
+            return user;
         }
     }
 }

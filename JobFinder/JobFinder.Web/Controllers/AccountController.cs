@@ -57,14 +57,15 @@ namespace JobFinder.Web.Controllers
 
         [AllowAnonymous]
         [HttpPost("api/v1/register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register(LoginModel model)
         {
-            var user = _loginService.Register(username, password);
+            var user = _loginService.Register(model.Username, model.Password);
 
             if (user == null)
             {
                 return BadRequest(new { errorText = "Invalid username or password." });
             }
+
             return Ok("successful");
         }
 

@@ -9,7 +9,8 @@ export const authenticationService = {
     register,
     logout,
     currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
+    get currentUserValue () { return currentUserSubject.value },
+    get isLogged () { return currentUserSubject.value }
 };
 
 function isLogged(){
@@ -31,11 +32,11 @@ function login(username, password) {
     })
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            currentUserSubject.next(user);
-
-            return user;
+            console.log(user);
+            if(user){
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                currentUserSubject.next(user);
+            }
         });
 }
 
@@ -53,13 +54,8 @@ function register(username, password){
             'password' : password 
         })
     })
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            currentUserSubject.next(user);
-
-            return currentUserSubject.value;
+        .then(response => {
+            return response.ok;
         });
 }
 

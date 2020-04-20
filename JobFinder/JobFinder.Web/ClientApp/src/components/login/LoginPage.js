@@ -4,24 +4,34 @@ import { authenticationService } from '../../services/authentication.service';
 import ErrorMessage from '../main/ErrorMessage';
 import { errorMessages } from '../../helpers/error-messages'
 import { Link } from 'react-router-dom';
+import Warning from '../main/Warning';
 
 class LoginPage extends Component{
     constructor(props){
         super(props);
-        if (authenticationService.currentUserValue) { 
+        if (authenticationService.isLogged) { 
             this.props.history.push('/');
         }
         this.state = {
-            loginResponse: null,
-            username: '1',
-            password: '1'
+            isWarningShowed: false,
+            username: '',
+            password: ''
         }
     }
 
     login = () => {
-        if(authenticationService.login(this.state.username, this.state.password)){
-            this.props.history.push('/');
-        }
+        authenticationService.login(this.state.username, this.state.password)
+        .then(() => {
+            if(authenticationService.isLogged){
+                this.props.history.push('/');
+            }
+            else{
+                this.setState({
+                    isWarningShowed: true
+                });
+            }
+        });
+            
     }
 
     handleSubmit = (event) => {
@@ -52,12 +62,14 @@ class LoginPage extends Component{
                         <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.password)} />
                     </div>
                 </div>
+                {this.state.isWarningShowed &&
+                    <Warning message='incorrect login or password'/>
+                }
                 <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
                 </form>
             </div>
-    
             <div>
-                <Link to='/register'>
+                <Link to='/auth/register'>
                     <a class="waves-effect waves-light btn-small white-text">Register</a>
                 </Link>
             </div>
