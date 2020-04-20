@@ -39,14 +39,14 @@ namespace JobFinder.Business.Services.Realizations
             Delete(medicament);
         }
 
-        public void Delete(Item medicament)
+        public void Delete(Item item)
         {
-            if (_context.Entry(medicament).State == EntityState.Detached)
+            if (_context.Entry(item).State == EntityState.Detached)
             {
-                _context.Attach(medicament);
+                _context.Attach(item);
             }
 
-            _context.Remove(medicament);
+            _context.Remove(item);
         }
     }
 }

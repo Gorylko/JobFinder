@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JobFinder.Business.Services.Interfaces;
 using JobFinder.General.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace JobFinder.Web.Controllers.Sample
     [Route("api/v1/items")]
     public class ItemController : Controller
     {
+        private IItemService _itemService;
         private Item[] _items = new[]
         {
             new Item(){ Id = 1, Name = "Name1", Description = "Descr1"},
@@ -27,6 +29,11 @@ namespace JobFinder.Web.Controllers.Sample
             new Item(){ Id = 6, Name = "Name6", Description = "Descr6"},
         };
 
+        public ItemController(IItemService itemService)
+        {
+            this._itemService = itemService ?? throw new ArgumentNullException(nameof(itemService));
+        }
+
         [HttpGet]
         public Item[] GetAll([FromQuery]int? categoryId)
         {
@@ -38,6 +45,17 @@ namespace JobFinder.Web.Controllers.Sample
         {
             var a = _items.FirstOrDefault(el => el.Id == id);
             return a;
+        }
+
+        [HttpPost]
+        public IActionResult Save(Item item)
+        {
+            if (item == null)
+            {
+                return BadRequest(new { errorText = "Invalid item" });
+            }
+
+            _itemService.Save(item);
         }
     }
 }

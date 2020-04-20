@@ -32,7 +32,6 @@ function login(username, password) {
     })
         .then(handleResponse)
         .then(user => {
-            console.log(user);
             if(user){
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 currentUserSubject.next(user);
@@ -42,7 +41,7 @@ function login(username, password) {
 
 function register(username, password){
 
-    return fetch(`api/v1/register`, {
+    return fetch(`api/v1/items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,9 +53,9 @@ function register(username, password){
             'password' : password 
         })
     })
-        .then(response => {
-            return response.ok;
-        });
+    .then(response => {
+        return response.ok;
+    });
 }
 
 function logout() {

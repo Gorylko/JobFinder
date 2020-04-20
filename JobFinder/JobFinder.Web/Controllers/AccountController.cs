@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace JobFinder.Web.Controllers
 {
     [ApiController]
+    [Route("api/v1/")]
     public class AccountController : Controller
     {
         private readonly ILoginService _loginService;
@@ -23,7 +24,8 @@ namespace JobFinder.Web.Controllers
             _loginService = loginService ?? throw new ArgumentNullException(nameof(loginService));
         }
 
-        [HttpPost("api/v1/login")]
+        [AllowAnonymous]
+        [HttpPost("login/")]
         public async Task<IActionResult> Login(LoginModel model)
         {
             var identity = await GetIdentity(model.Username, model.Password);
@@ -56,7 +58,7 @@ namespace JobFinder.Web.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("api/v1/register")]
+        [HttpPost("register/")]
         public async Task<IActionResult> Register(LoginModel model)
         {
             var user = _loginService.Register(model.Username, model.Password);
