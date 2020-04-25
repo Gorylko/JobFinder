@@ -40,7 +40,6 @@ function login(username, password) {
 }
 
 function register(username, password){
-    console.log(username + ' ' + password);
     return fetch(`/register`, {
         method: 'POST',
         headers: {

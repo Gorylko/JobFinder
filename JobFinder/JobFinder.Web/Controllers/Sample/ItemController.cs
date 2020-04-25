@@ -34,7 +34,13 @@ namespace JobFinder.Web.Controllers.Sample
         [HttpPost]
         public IActionResult Save(Item item)
         {
-            var response = _itemService.Save(item);
+            var result = _itemService.Save(item);
+
+            if (result.IsSuccessful)
+            {
+                return BadRequest(new { errorText = result.ErrorMessage });
+            }
+
             return Ok();
         }
     }

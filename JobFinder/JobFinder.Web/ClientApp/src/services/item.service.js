@@ -1,7 +1,8 @@
 import { handleResponse } from '../helpers/handle-response';
 
 export const itemService = {
-    save
+    save,
+    getById
 }
 
 function save(item){
@@ -25,5 +26,17 @@ function save(item){
     .then(response => {
         return response.ok;
     });
+}
+
+function getById(id){
+    return fetch(`api/v1/items/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer'
+    })
+    .then(handleResponse);
 }
 

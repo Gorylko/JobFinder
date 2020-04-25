@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { itemService } from '../../services/item.service'
 
 class ItemInfo extends Component{
 
@@ -13,30 +14,36 @@ class ItemInfo extends Component{
     }
 
     componentDidMount() {
-        fetch(`api/v1/items/${this.state.itemId}`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                item: result,
-                isLoaded: true
-              });
-            },
-            (error) => {
-              this.setState({
-                error
-              });
-            }
-          )
-        }
+      itemService.getById(this.state.itemId)
+      .then(item =>{
+        this.setState({
+          item: item,
+          isLoaded: true
+        });
+      })
+    }
 
     render(){
+        console.log(this.state.itemId);
         if(!this.state.isLoaded){
             return(
-                <h1>Loading...</h1>
+              <div class="progress">
+                <div class="indeterminate"></div>
+              </div>
             );
         }
-        return(1
+        return(
+          <div>
+            <h2>{this.state.item.name}</h2>
+            <p class="flow-text">{this.state.item.description}</p>
+            <blockquote>
+            {this.state.item.phoneNumber}<br/>
+            {this.state.item.email}
+            </blockquote>
+            <blockquote>
+            {this.state.item.additionalContacts}
+            </blockquote>
+         </div>
            );
     }
 }
