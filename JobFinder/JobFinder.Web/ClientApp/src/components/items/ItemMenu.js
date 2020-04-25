@@ -5,7 +5,7 @@ import ItemList from './ItemsList';
 import ItemInfo from './ItemInfo';
 import { PrivateRoute } from '../PrivateRoute';
 import { createImportEqualsDeclaration } from 'typescript';
-import CreateItemMenu from './CreateItemMenu';
+import AddItemMenu from './AddItemMenu';
 
 class ItemMenu extends Component{
     constructor(props){
@@ -17,8 +17,8 @@ class ItemMenu extends Component{
         return(
             <Switch>
                 <Route exact path="/items" component={ ItemList } />
-                <PrivateRoute path="/items/add" component={CreateItemMenu}/>
-                <Route path="/items/:number" component={ItemInfo} />
+                <Route exact path="/items/add" component={AddItemMenu}/>
+                <Route exact path="/items/:number" component={ItemInfo} />
             </Switch>
         );
     }

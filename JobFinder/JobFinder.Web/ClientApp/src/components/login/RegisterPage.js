@@ -26,6 +26,9 @@ class RegisterPage extends Component{
             this.setState({
                 isWarningShowed: !isOk
             });
+            if(isOk){
+                this.props.history.push('/');
+            }
         });
     }
     
@@ -74,7 +77,7 @@ class RegisterPage extends Component{
                         <span class="helper-text" data-error="wrong" data-success="right">Need to enter email</span>
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
+                    <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
                 </form>
             </div>
             {this.state.isWarningShowed &&

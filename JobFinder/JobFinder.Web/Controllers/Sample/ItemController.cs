@@ -43,8 +43,7 @@ namespace JobFinder.Web.Controllers.Sample
         [HttpGet("{id}")]
         public Item GetById(int id)
         {
-            var a = _items.FirstOrDefault(el => el.Id == id);
-            return a;
+            return _itemService.GetById(id);
         }
 
         [HttpPost]
@@ -56,6 +55,7 @@ namespace JobFinder.Web.Controllers.Sample
             }
 
             _itemService.Save(item);
+            return Ok();
         }
     }
 }

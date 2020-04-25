@@ -40,8 +40,8 @@ function login(username, password) {
 }
 
 function register(username, password){
-
-    return fetch(`api/v1/items`, {
+    console.log(username + ' ' + password);
+    return fetch(`/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

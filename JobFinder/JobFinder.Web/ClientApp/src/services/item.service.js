@@ -1,7 +1,7 @@
 import { handleResponse } from '../helpers/handle-response';
 
 export const itemService = {
-
+    save
 }
 
 function save(item){
@@ -13,8 +13,13 @@ function save(item){
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify({
-            'username': username, 
-            'password' : password 
+            'Name': item.name,
+            'Description': item.description,
+            'Email': item.email, 
+            'PhoneNumber': item.phoneNumber, 
+            'Requirements': item.requirements, 
+            'Benefits': item.benefits, 
+            'AdditionalContacts': item.additionalContacts
         })
     })
     .then(response => {

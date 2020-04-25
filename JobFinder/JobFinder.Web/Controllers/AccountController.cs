@@ -58,7 +58,7 @@ namespace JobFinder.Web.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("register/")]
+        [HttpPost("/register")]
         public async Task<IActionResult> Register(LoginModel model)
         {
             var user = _loginService.Register(model.Username, model.Password);
