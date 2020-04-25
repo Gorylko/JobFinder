@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JobFinder.Business.Results;
 using JobFinder.Business.Services.Interfaces;
 using JobFinder.Data.Context;
 using JobFinder.General.Entities;
@@ -15,33 +16,57 @@ namespace JobFinder.Business.Services.Realizations
         {
             this._context = new JFContext();    
         }
-        public User GetByCredentials(string login, string password)
+        public IServiceResult<User> GetByCredentials(string login, string password)
         {
-            return _context.Users
-                .FirstOrDefault(user => user.Login == login
-                                        && user.Password == password);
+            return new ServiceResult<User>()
+            {
+                Result = _context.Users
+                    .FirstOrDefault(user => user.Login == login
+                                            && user.Password == password),
+                IsSuccessful = true
+            };
         }
 
-        public IEnumerable<User> GetAll()
+        public IServiceResult<IEnumerable<User>> GetAll()
         {
-            return _context.Users.AsQueryable();
+            return new ServiceResult<IEnumerable<User>>()
+            {
+                Result = _context.Users.AsQueryable(),
+                IsSuccessful = true
+            };
         }
 
-        public User GetById(int id)
+        public IServiceResult<User> GetById(int id)
         {
-            return _context.Users.Find(id);
+            return new ServiceResult<User>()
+            {
+                Result = _context.Users.Find(id),
+                IsSuccessful = true
+            };
         }
 
-        public void Save(User obj)
+        public IServiceResult<User> Save(User obj)
         {
             _context.Users.Add(obj);
             _context.SaveChanges();
+
+            return new ServiceResult<User>()
+            {
+                Result = obj,
+                IsSuccessful = true,
+            };
         }
 
-        public void Delete(int id)
+        public IServiceResult<User> Delete(int id)
         {
-            var medicament = _context.Find<User>(id);
-            Delete(medicament);
+            var user = _context.Find<User>(id);
+            Delete(user);
+
+            return new ServiceResult<User>()
+            {
+                Result = user,
+                IsSuccessful = true
+            };
         }
 
         public void Delete(User medicament)

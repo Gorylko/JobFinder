@@ -1,4 +1,5 @@
 ﻿using System;
+using JobFinder.Business.Results;
 using JobFinder.Business.Services.Interfaces;
 using JobFinder.General.Entities;
 
@@ -13,16 +14,20 @@ namespace JobFinder.Business.Services.Realizations
             this._userService = new UserService();
         }
 
-        public User Login(string login, string password)
+        public IServiceResult<User> Login(string login, string password)
         {
             return _userService.GetByCredentials(login, password);
         }
 
-        public User Register(string login, string password)
+        public IServiceResult<User> Register(string login, string password)
         {
-            if (_userService.GetByCredentials(login, password) != null)
+            if (_userService.GetByCredentials(login, password).IsSuccessful)
             {
-                return null;
+                return new ServiceResult<User>()
+                {
+                    IsSuccessful = false,
+                    ErrorMessage = "already exits"
+                };
             }
 
             var user = new User
@@ -33,7 +38,10 @@ namespace JobFinder.Business.Services.Realizations
 
             _userService.Save(user);
 
-            return user;
+            return new ServiceResult<User>()
+            {
+                IsSuccessful = true
+            };
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using JobFinder.General.Entities;
+﻿using JobFinder.Business.Results;
+using JobFinder.General.Entities;
 
 namespace JobFinder.Business.Services.Interfaces
 {
     public interface ILoginService
     {
-        User Login(string login, string password);
+        IServiceResult<User> Login(string login, string password);
 
-        User Register(string login, string password);
+        IServiceResult<User> Register(string login, string password);
     }
 }

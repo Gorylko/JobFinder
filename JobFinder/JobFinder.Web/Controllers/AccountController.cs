@@ -61,11 +61,11 @@ namespace JobFinder.Web.Controllers
         [HttpPost("/register")]
         public async Task<IActionResult> Register(LoginModel model)
         {
-            var user = _loginService.Register(model.Username, model.Password);
+            var result = _loginService.Register(model.Username, model.Password);
 
-            if (user == null)
+            if (result.IsSuccessful)
             {
-                return BadRequest(new { errorText = "Invalid username or password." });
+                return BadRequest(new { errorText = result.ErrorMessage });
             }
 
             return Ok("successful");
@@ -76,7 +76,7 @@ namespace JobFinder.Web.Controllers
         {
             //var person = await _userService.Login(username, password);
 
-            var user = _loginService.Login(username, password);
+            var user = _loginService.Login(username, password).Result;
 
             if (user != null)
             {

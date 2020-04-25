@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using JobFinder.Business.Results;
 
 namespace JobFinder.Business.Services.Interfaces
 {
     public interface IService<T>
     {
-        T GetById(int id);
+        IServiceResult<T> GetById(int id);
 
-        IEnumerable<T> GetAll();
+        IServiceResult<IEnumerable<T>> GetAll();
 
-        void Save(T obj);
+        IServiceResult<T> Save(T obj);
 
-        void Delete(int id);
+        IServiceResult<T> Delete(int id);
     }
 }

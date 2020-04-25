@@ -1,45 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using JobFinder.Business.Results;
 using JobFinder.Business.Services.Interfaces;
+using JobFinder.Business.Validators.Interfaces;
+using JobFinder.Business.Validators.Realizations;
 using JobFinder.Data.Context;
 using JobFinder.General.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JobFinder.Business.Services.Realizations
 {
     public class ItemService : IItemService
     {
         private readonly JFContext _context;
+        private readonly IValidator<Item> _validator;
 
         public ItemService()
         {
             this._context = new JFContext();
+            this._validator = new ItemValidator();
         }
-        public IEnumerable<Item> GetAll()
+        public IServiceResult<IEnumerable<Item>> GetAll()
         {
-            return _context.Items.ToList();
+            return new ServiceResult<IEnumerable<Item>>()
+            {
+                Result = _context.Items.ToList(),
+                IsSuccessful = true
+            };
         }
 
-        public Item GetById(int id)
+        public IServiceResult<Item> GetById(int id)
         {
-            return _context.Items.Find(id);
+            return new ServiceResult<Item>()
+            {
+                Result = _context.Items.Find(id),
+                IsSuccessful = true
+            };
         }
 
-        public void Save(Item obj)
+        public IServiceResult<Item> Save(Item obj)
         {
+            var validatorResult = _validator.IsValid(obj);
+
+            if (!validatorResult.IsSuccessful)
+            {
+                return validatorResult;
+            }
+
             _context.Items.Add(obj);
             _context.SaveChanges();
+
+            return validatorResult;
         }
 
-        public void Delete(int id)
+        public IServiceResult<Item> Delete(int id)
         {
             var medicament = _context.Find<Item>(id);
             Delete(medicament);
+
+            return new ServiceResult<Item>();
         }
 
-        public void Delete(Item item)
+        public IServiceResult<Item> Delete(Item item)
         {
             if (_context.Entry(item).State == EntityState.Detached)
             {
@@ -47,6 +69,7 @@ namespace JobFinder.Business.Services.Realizations
             }
 
             _context.Remove(item);
+            return new ServiceResult<Item>();
         }
     }
 }
