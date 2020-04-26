@@ -36,7 +36,7 @@ namespace JobFinder.Web.Controllers.Sample
         {
             var result = _itemService.Save(item);
 
-            if (result.IsSuccessful)
+            if (!result.IsSuccessful)
             {
                 return BadRequest(new { errorText = result.ErrorMessage });
             }

@@ -10,24 +10,50 @@
 }
 
 a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-  }
-  
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
   html {
-    font-size: 14px;
+    font-size: 16px;
   }
-  @media (min-width: 768px) {
-    html {
-      font-size: 16px;
-    }
-  }
-  
-  .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-  }
-  header{
-    margin-bottom: 30px;;
-  }
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+header{
+  margin-bottom: 30px;;
+}
+
+a{
+  text-decoration: none;
+}
+
+A:hover { 
+  text-decoration: none; 
+  color: rgb(255, 255, 255);
+}
+
+blockquote {
+  border-left: 5px solid #43a047 ;
+}
+
+.jf-page-title{
+  margin-bottom: 25px;
+}
+
+body{
+  background-color: #444444;
+}
+
+.jf-img{
+  height: 300px;
+}
   

@@ -1,6 +1,6 @@
 {
-  "short_name": "JobFinder.Web",
-  "name": "JobFinder.Web",
+  "short_name": "JobFinder",
+  "name": "JobFinder",
   "icons": [
     {
       "src": "favicon.ico",

@@ -14,7 +14,7 @@ class Item extends Component{
                 <div class="card-image">
                     <img src="https://materializecss.com/images/office.jpg"/>
                     <Link to={`/items/${this.state.item.id}`} class="halfway-fab btn-floating pink">
-                        <i class="material-icons">info_outline</i>
+                        <i class="material-icons jf-green-info-button">info_outline</i>
                     </Link>
                   <span class="card-title">{this.state.item.name}</span>
                 </div>

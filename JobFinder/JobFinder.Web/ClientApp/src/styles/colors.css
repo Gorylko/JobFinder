@@ -1,0 +1,42 @@
+.jf-green-text:hover{
+    color: #00b16a;
+}
+
+.jf-green-text{
+    color: #b3b3b3;
+}
+
+.jf-green-nav-button{
+    background-color: #047808;
+}
+
+.jf-green-nav-button:hover{
+    background-color: #1dab01;
+}
+
+.jf-green-info-button{
+    background-color: #1dab01
+}
+
+.jf-green-info-button:hover{
+    background-color: #23c403
+}
+
+.jf-logo-img{
+    height:50px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.jf-logo{
+   color: #7e7e7e !important; 
+}
+
+.jf-gray{
+    background-color: #333333 !important;
+}
+
+.jf-text{
+    color: #c4c4c4;
+}
+

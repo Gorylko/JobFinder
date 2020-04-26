@@ -41,7 +41,7 @@ namespace JobFinder.Business.Services.Realizations
         public IServiceResult<Item> Save(Item obj)
         {
             var validatorResult = _validator.IsValid(obj);
-
+            validatorResult.IsSuccessful = true;
             if (!validatorResult.IsSuccessful)
             {
                 return validatorResult;
