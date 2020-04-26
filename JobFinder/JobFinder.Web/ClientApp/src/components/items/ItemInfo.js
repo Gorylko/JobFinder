@@ -37,23 +37,23 @@ class ItemInfo extends Component{
       return(
         <div>
             {authenticationService.isLogged && 
-              <Link to={`items/delete/${this.state.item.id}`}>
-                <a class="waves-effect waves-light btn-large white-text green darken-2">Удалить<i class="large material-icons right">delete</i></a>
+              <Link to={`delete/${this.state.item.id}`}>
+                <a class="waves-effect waves-light btn-large white-text jf-green-button">Удалить<i class="large material-icons right">delete</i></a>
               </Link>
             }
           <h3 className="center jf-page-title jf-text">Информация</h3>
           <div className="row">
             <div class="col 8s 8m 8l">
-              <div class="card-panel jf-text grey darken-2">
+              <div class="card-panel jf-text grey darken-2 hoverable">
                 <h1>{this.state.item.name}</h1>
                 <p class="flow-text">{this.state.item.description}</p>
-                <div class="card-panel green darken-2">
+                <div class="card-panel jf-green hoverable">
                   <h4>Требования к кандидату</h4>
                   <p>
                     {this.state.item.requirements}
                   </p>
                 </div>
-                <div class="card-panel green darken-2">
+                <div class="card-panel jf-green hoverable">
                   <h4>Предложения реботодателя</h4>
                   <p>
                     {this.state.item.benefits}
@@ -62,11 +62,11 @@ class ItemInfo extends Component{
               </div>
             </div>
             <div class="col 4s 4m 4l">
-              <div class="card-panel grey darken-2 jf-text">
+              <div class="card-panel jf-green jf-text hoverable">
                 <blockquote>{this.state.item.phoneNumber}</blockquote>
                 <blockquote>{this.state.item.email}</blockquote>
               </div>
-              <div class="card-panel green darken-3 jf-text">
+              <div class="card-panel green darken-3 jf-text hoverable">
                 <h4>Дополнительные контакты</h4>
                 <span class="jf-text">{this.state.item.additionalContacts}</span>
               </div>

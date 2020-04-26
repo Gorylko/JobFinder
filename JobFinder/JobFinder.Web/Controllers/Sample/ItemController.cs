@@ -43,5 +43,12 @@ namespace JobFinder.Web.Controllers.Sample
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _itemService.Delete(id);
+            return Ok();
+        }
     }
 }

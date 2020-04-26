@@ -2,7 +2,20 @@ import { handleResponse } from '../helpers/handle-response';
 
 export const itemService = {
     save,
-    getById
+    getById,
+    deleteById
+}
+
+function deleteById(id){
+    return fetch(`api/v1/items/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+    })
+    .then(handleResponse);
 }
 
 function save(item){

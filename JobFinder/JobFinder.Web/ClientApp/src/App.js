@@ -5,6 +5,7 @@ import Home from './components/main/Home';
 import './custom.css';
 import './styles/main.css';
 import './styles/colors.css';
+import './styles/theme.css';
 import ItemMenu from './components/items/ItemMenu';
 import AuthMenu from './components/login/AuthMenu';
 

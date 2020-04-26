@@ -57,3 +57,19 @@ body{
   height: 300px;
 }
   
+html, 
+body {   
+  height: 100%; 
+} 
+ 
+.content { 
+  flex: 1 0 auto; 
+} 
+footer {   
+  flex-shrink: 0; 
+}
+#root{
+  display: flex;   
+  flex-direction: column; 
+  height: 100%;
+}

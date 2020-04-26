@@ -1,0 +1,15 @@
+.jf-logo-img{
+    height:50px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.jf-title-text{
+    color: rgb(182, 182, 182);
+    padding: 2px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}

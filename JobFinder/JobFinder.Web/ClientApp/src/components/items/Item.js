@@ -9,16 +9,16 @@ class Item extends Component{
 
     render(){
         return(
-            <div class="col s12 m7">
-              <div class="card" key={this.state.item.id}>
+            <div class="col s4 m4 l4">
+              <div class="card jf-item hoverable" key={this.state.item.id}>
                 <div class="card-image">
-                    <img src="https://materializecss.com/images/office.jpg"/>
+                    <img src="https://www.artit-k.com/wp-content/uploads/2015/03/PaperColorMaterialDesign_Green.png"/>
                     <Link to={`/items/${this.state.item.id}`} class="halfway-fab btn-floating pink">
                         <i class="material-icons jf-green-info-button">info_outline</i>
                     </Link>
-                  <span class="card-title">{this.state.item.name}</span>
+                  <span class="card-title"><b>{this.state.item.name}</b></span>
                 </div>
-                <div class="card-content">
+                <div class="card-content jf-text-dark">
                   <p>Manufacturer</p>
                 </div>
               </div>

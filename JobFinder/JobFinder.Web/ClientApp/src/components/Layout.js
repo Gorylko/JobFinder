@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { NavMenu } from './NavMenu';
 import '../styles/main.css'
+import Footer from './Footer';
 
 export class Layout extends Component {
   static displayName = Layout.name;
@@ -10,13 +11,12 @@ export class Layout extends Component {
     return (
       <>
         <NavMenu />
-
-        <Container>
-          <div>
-            {this.props.children}
-          </div>
-
-        </Container>
+          <Container className='content'>
+            <div>
+              {this.props.children}
+            </div>
+          </Container>
+        <Footer/>
       </>
     );
   }

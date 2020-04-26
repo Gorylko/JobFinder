@@ -54,7 +54,7 @@ class AddItemMenu extends Component{
     render(){
         return (
         <div>
-            <p class="flow-text">Добавление новой записи</p>
+            <p class="flow-text jf-title-text">Добавление новой записи</p>
             <div class="row">
                 <form class="col s12" onSubmit={this.handleSubmit}>
                     <div class="row">

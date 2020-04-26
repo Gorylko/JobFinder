@@ -7,25 +7,29 @@
 }
 
 .jf-green-nav-button{
-    background-color: #047808;
+    background-color: #00ae5d;
 }
 
 .jf-green-nav-button:hover{
-    background-color: #1dab01;
+    background-color: #00924e;
 }
 
 .jf-green-info-button{
-    background-color: #1dab01
+    background-color: #00ae5d;
+    color: #333333;
+    text-decoration-color: #00ae5d;
 }
 
 .jf-green-info-button:hover{
-    background-color: #23c403
+    background-color: #00924e
 }
 
-.jf-logo-img{
-    height:50px;
-    margin-left: 10px;
-    margin-bottom: 5px;
+.jf-green-button{
+    background-color: #00ae5d;
+}
+
+.jf-green-button:hover{
+    background-color: #00924e;
 }
 
 .jf-logo{
@@ -37,6 +41,29 @@
 }
 
 .jf-text{
+    color: #e6e6e6;
+}
+
+.jf-text-dark{
     color: #c4c4c4;
 }
 
+.jf-item{
+    background-color: #333333;
+}
+
+.jf-green{
+    background-color: #00ae5d;
+}
+
+.jf-gray{
+    color: #3caa3c;
+}
+
+.jf-gray-footer-content{
+    background-color: #303030 !important;
+}
+
+.jf-gray-footer-copyright{
+    background-color: #242424 !important;
+}
