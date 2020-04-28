@@ -69,6 +69,7 @@ namespace JobFinder.Business.Services.Realizations
             }
 
             _context.Remove(item);
+            _context.SaveChanges();
             return new ServiceResult<Item>();
         }
     }
