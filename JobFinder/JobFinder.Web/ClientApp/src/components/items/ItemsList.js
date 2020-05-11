@@ -42,10 +42,10 @@ class ItemList extends Component{
             <div className="container">
               {authenticationService.isLogged && 
                 <Link to='items/add'>
-                  <a class="waves-effect waves-light btn-large white-text jf-green-button">Add new<i class="large material-icons right">create_new_folder</i></a>
+                  <a class="waves-effect waves-light btn-large white-text jf-green-button">Добавить новую<i class="large material-icons right">create_new_folder</i></a>
                </Link>
               }
-              <h3 className="jf-title-text">Our items</h3>
+              <h3 className="jf-title-text">Активные вакансии</h3>
               
               <div>
                   <div className="row">

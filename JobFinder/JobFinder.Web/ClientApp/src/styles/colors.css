@@ -14,6 +14,14 @@
     background-color: #00924e;
 }
 
+.jf-green-button{
+    background-color: #00ae5d;
+}
+
+.jf-green-button:hover{
+    background-color: #00924e;
+}
+
 .jf-green-info-button{
     background-color: #00ae5d;
     color: #333333;

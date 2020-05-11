@@ -21,7 +21,7 @@ namespace JobFinder.Business.Services.Realizations
 
         public IServiceResult<User> Register(string login, string password)
         {
-            if (_userService.GetByCredentials(login, password).IsSuccessful)
+            if (!_userService.GetByCredentials(login, password).IsSuccessful)
             {
                 return new ServiceResult<User>()
                 {

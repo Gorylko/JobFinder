@@ -54,30 +54,30 @@ class RegisterPage extends Component{
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="username" type="text" class="validate" onChange={this.handleInputChange}/>
-                        <label for="username">Username</label>
+                        <label for="username">Логин</label>
                         <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.username)} />
                     </div>
                     <div class="input-field col s6">
                         <input id="password" type="password" class="validate" onChange={this.handleInputChange}/>
-                        <label for="password">Password</label>
+                        <label for="password">Пароль</label>
                         <ErrorMessage getMessage={errorMessages.IsLengthOptimal(this.state.password)} />
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="phone-number" type="tel" class="validate" onChange={this.handleInputChange}/>
-                        <label for="phone-number">Phone Number</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter phone</span>
+                        <label for="phone-number">Номер телефона</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Необходимо ввести номер телефона</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" type="email" class="validate" onChange={this.handleInputChange}/>
-                        <label for="email">Email</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Need to enter email</span>
+                        <label for="email">Почта</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Необходимо ввести почту</span>
                     </div>
                 </div>
-                    <button class="waves-effect waves-light btn-large" type="submit" name="action">Submit</button>
+                    <button class="waves-effect waves-light btn-large jf-green-button" type="submit" name="action">Зарегистрироваться</button>
                 </form>
             </div>
             {this.state.isWarningShowed &&
@@ -85,7 +85,7 @@ class RegisterPage extends Component{
             }
             <div>
                 <Link to='/auth/login'>
-                    <a class="waves-effect waves-light btn-small white-text">Back to Login</a>
+                    <a class="waves-effect waves-light btn-small white-text jf-green-button">Вернуться</a>
                 </Link>
             </div>
         </>

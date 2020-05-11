@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ItemImage from '../../images/ItemPrev.png'
 
 class Item extends Component{
     constructor(props){
@@ -12,14 +13,14 @@ class Item extends Component{
             <div class="col s4 m4 l4">
               <div class="card jf-item hoverable" key={this.state.item.id}>
                 <div class="card-image">
-                    <img src="https://www.artit-k.com/wp-content/uploads/2015/03/PaperColorMaterialDesign_Green.png"/>
+                    <img src={ItemImage}/>
                     <Link to={`/items/${this.state.item.id}`} class="halfway-fab btn-floating pink">
                         <i class="material-icons jf-green-info-button">info_outline</i>
                     </Link>
                   <span class="card-title"><b>{this.state.item.name}</b></span>
                 </div>
                 <div class="card-content jf-text-dark">
-                  <p>Manufacturer</p>
+                  <p>{this.state.item.description}</p>
                 </div>
               </div>
             </div>

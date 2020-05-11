@@ -63,7 +63,7 @@ namespace JobFinder.Web.Controllers
         {
             var result = _loginService.Register(model.Username, model.Password);
 
-            if (result.IsSuccessful)
+            if (!result.IsSuccessful)
             {
                 return BadRequest(new { errorText = result.ErrorMessage });
             }

@@ -26,11 +26,11 @@ export class NavMenu extends Component {
     const profileButton = authenticationService.currentUserValue
     ? 
     <Link to='/' onClick={authenticationService.logout}>                      
-      <li><a class="large waves-effect waves-light btn-large jf-green-nav-button">Logout<i class="material-icons right">cancel</i></a></li>
+      <li><a class="large waves-effect waves-light btn-large jf-green-nav-button">Выйти<i class="material-icons right">cancel</i></a></li>
     </Link>
     : 
     <Link to="/auth/login">
-      <li><a class="large waves-effect waves-light btn-large jf-green-nav-button">Log in<i class="material-icons right">cloud_done</i></a></li>
+      <li><a class="large waves-effect waves-light btn-large jf-green-nav-button">Войти<i class="material-icons right">cloud_done</i></a></li>
     </Link>;
   
     return (
@@ -40,8 +40,8 @@ export class NavMenu extends Component {
                   <Link to="/" className="brand-logo"><img class="jf-logo-img" src={logoImage}/></Link>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                   <ul className="right hide-on-med-and-down">
-                      <li><Link to="/" className='jf-green-text'>Main</Link></li>
-                      <li><Link to="/items" className='jf-green-text'>Items</Link></li>
+                      <li><Link to="/" className='jf-green-text'>Главная</Link></li>
+                      <li><Link to="/items" className='jf-green-text'>Вакансии</Link></li>
                       <li>{profileButton}</li>
                   </ul>
             </nav>
